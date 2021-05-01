@@ -2,11 +2,12 @@ const firebase = require("./firebase_connect")
 
 module.exports = {
     saveData: (req, callback) => {
-        let username = req.username;
+        let username = new Date().getTime();
 
-        firebase.database().ref("users/"+username).set({
-            name: req.username,
-            email: req.email
+        firebase.database().ref("users/"+username.toString()).set({
+            temp: req.value1,
+            h: req.value2,
+            m: req.value3
         })
         callback({"statuscode":200, "message": "Inserted successfully"})
     }
