@@ -10,7 +10,4 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.use('/', require('./routes/hello'))
 
-// app.listen(4000, ()=>{
-//     console.log("Server start")
-// })
 module.exports.handler = serverless(app);
