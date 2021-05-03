@@ -1,8 +1,12 @@
 // const ofirebase = require("../firebase/setData");
 const firebase = require("../firebase/firebase_connect");
 
-exports.hello = (req, res) => {
-  res.send("Hello world");
+exports.hello = async (req, res) => {
+  let data = {}
+  await firebase.database().ref('/users').once('value').then((snapshot) => {
+    data = snapshot.val()
+  })
+  res.send(data)
 };
 
 exports.hello2 = async (req, res) => {
