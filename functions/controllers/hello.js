@@ -6,7 +6,7 @@ exports.hello = async (req, res) => {
   await firebase.database().ref('/users').once('value').then((snapshot) => {
     data = snapshot.val()
   })
-  res.send(data)
+  res.json([data])
 };
 
 exports.hello2 = async (req, res) => {
